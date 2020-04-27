@@ -1,0 +1,10 @@
+{
+    "BPBC_BCR_disabled_Iterations": 3.02,
+    "BPBC_BCR_RT/M_Iterations": 3.02,
+    "BPBC_BCR_ERT/C_Iterations": 2.9,
+    "BPBC_BCR_MAX_Iterations": 8.26,
+    "BCPC_BCR_disabled_Iterations": 3.0,
+    "BCPC_BCR_M/RT_Iterations": 3.0,
+    "BCPC_BCR_C/ERT_Iterations": 3.0,
+    "BCPC_BCR_MAX_Iterations": 8.96
+}

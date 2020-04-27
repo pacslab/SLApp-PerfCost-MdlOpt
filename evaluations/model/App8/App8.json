@@ -1,0 +1,126 @@
+{
+    "Comment": "App8",
+    "StartAt": "f1",
+    "States": {
+        "f1": {
+            "Type": "Task",
+            "Resource": "arn:aws:lambda:us-east-2:499537426559:function:App8_f1",
+            "ResultPath": "$.f1_output",
+            "OutputPath": "$.f1_output.body.input",
+            "Next": "Parallel State"
+        },
+        "Parallel State": {
+            "Type": "Parallel",
+            "Branches": [
+                {
+                    "StartAt": "f2",
+                    "States": {
+                        "f2": {
+                            "Type": "Task",
+                            "Resource": "arn:aws:lambda:us-east-2:499537426559:function:App8_f2",
+                            "ResultPath": "$.f2_output",
+                            "OutputPath": "$.f2_output.body.input",
+                            "Next": "Choice State 1"
+                        },
+                        "Choice State 1": {
+                            "Type": "Choice",
+                            "Choices": [
+                                {
+                                    "Variable": "$.para1",
+                                    "NumericLessThanEquals": 60,
+                                    "Next": "f4"
+                                },
+                                {
+                                    "Variable": "$.para1",
+                                    "NumericGreaterThan": 60,
+                                    "Next": "f5"
+                                }
+                            ],
+                            "Default": "f4"
+                        },
+                        "f4": {
+                            "Type": "Task",
+                            "Resource": "arn:aws:lambda:us-east-2:499537426559:function:App8_f4",
+                            "ResultPath": "$.f4_output",
+                            "OutputPath": "$.f4_output.body.input",
+                            "Next": "pass1"
+                        },
+                        "f5": {
+                            "Type": "Task",
+                            "Resource": "arn:aws:lambda:us-east-2:499537426559:function:App8_f5",
+                            "ResultPath": "$.f5_output",
+                            "OutputPath": "$.f5_output.body.input",
+                            "Next": "pass1"
+                        },
+                        "pass1": {
+                            "Type": "Pass",
+                            "ResultPath": "$.choice1_output",
+                            "End": true
+                        }
+                    }
+                },
+                {
+                    "StartAt": "f3",
+                    "States": {
+                        "f3": {
+                            "Type": "Task",
+                            "Resource": "arn:aws:lambda:us-east-2:499537426559:function:App8_f3",
+                            "ResultPath": "$.f3_output",
+                            "OutputPath": "$.f3_output.body.input",
+                            "Next": "f6"
+                        },
+                        "f6": {
+                            "Type": "Task",
+                            "Resource": "arn:aws:lambda:us-east-2:499537426559:function:App8_f6",
+                            "ResultPath": "$.f6_output",
+                            "OutputPath": "$.f6_output.body.input",
+                            "Next": "Choice State 2"
+                        },
+                        "pass2": {
+                            "Type": "Pass",
+                            "ResultPath": "$.choice2_output",
+                            "End": true
+                        },
+                        "Choice State 2": {
+                            "Type": "Choice",
+                            "Choices": [
+                                {
+                                    "Variable": "$.para2_result",
+                                    "NumericLessThanEquals": 10,
+                                    "Next": "f3"
+                                }
+                            ],
+                            "Default": "pass2"
+                        }
+                    }
+                }
+            ],
+            "ResultPath": "$.parallel1_output",
+            "OutputPath": "$.parallel1_output[0]",
+            "Next": "f7"
+        },
+        "f7": {
+            "Type": "Task",
+            "Resource": "arn:aws:lambda:us-east-2:499537426559:function:App8_f7",
+            "ResultPath": "$.f7_output",
+            "OutputPath": "$.f7_output.body.input",
+            "Next": "Choice State 3"
+        },
+        "Choice State 3": {
+            "Type": "Choice",
+            "Choices": [
+                {
+                    "Variable": "$.para3_result",
+                    "NumericLessThanEquals": 20,
+                    "Next": "f7"
+                }
+            ],
+            "Default": "f8"
+        },
+        "f8": {
+            "Type": "Task",
+            "Resource": "arn:aws:lambda:us-east-2:499537426559:function:App8_f8",
+            "End": true
+        }
+    }
+}

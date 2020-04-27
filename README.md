@@ -3,15 +3,15 @@ Artifact repository for the paper "Modeling and Optimization of Performance and 
 ## Overview of the proposed approach
 ![alt text](docs/PaperIcon.png "Overview of the proposed approach for modeling and optimization of performance and cost of serverless applications. The three boxes from left to right illustrate the input, performance and cost models and optimization algorithms, and corresponding output, respectively. The cloud provider part can be replaced with any FaaS platforms. We use AWS for experimental evaluation in this work.")
 * Two analytical models to accurately get the average end-to-end response time and cost of serverless applications.
-* Probability refined critical path algorithm to answer the follwing two optimization problems for non-DAG serverless workflows. 
+* Probability refined critical path algorithm to answer the following two optimization problems for non-DAG serverless workflows. 
     * Best performance (end-to-end response time) under a budget constraint
     * Best cost under a performance constraint
 * Models and algorithms verified by experiments on AWS.
 ## Artifacts
 * [Performance and Cost Models](./source/ServerlessAppPerfCostMdlOpt/ServerlessAppWorkflow)
 * [Probability Refined Critical Path Algorithm](./source/ServerlessAppPerfCostMdlOpt/PerfOpt)
-* [Servleress Application Generator for Testing and Experimental Evaluations](./source/ServerlessAppPerfCostMdlOpt/AppGenerator)
-* [Scripts and Resulsts of Experimental Evaluations](./evaluations)
+* [Serverless Application Generator for Testing and Experimental Evaluations](./source/ServerlessAppPerfCostMdlOpt/AppGenerator)
+* [Scripts and Results of Experimental Evaluations](./evaluations)
     * [Experimental Evaluations of Performance and Cost Models](./evaluations/model)
         * [Result Analysis](./evaluations/model/analysis/ResultAnalysis.ipynb)
         * [App8](./evaluations/model/App8/App8.ipynb)
@@ -45,7 +45,7 @@ pip install -r requirements.txt
 Please follow this [documentation](./docs/usage.ipynb).
 
 ## Figures
-Hover to see the caption. Self-loop edges might be overlapped.
+Hover to see the caption. Some self-loop edges might be overlapped.
 ### Evaluation Results
 
 <img src="./evaluations/model/analysis/Analytical_Model_Accuracy_RT.png" style="float: left" width="500" title="Experimental evaluation result of the performance model. As the number of functions in the application increases from 8 to 16, the workflow become more complex in terms of structures. The average accuracy is 98.75%.">
